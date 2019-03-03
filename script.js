@@ -88,6 +88,7 @@ function clear(id){
 	newNumber = false;
 	currenNumber = 0;
     console.log('клик по кнопке ' + id);
+    currentOperation = '';
     document.getElementById('res').style.fontSize = '69px';
 }
 
