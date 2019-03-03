@@ -3,12 +3,12 @@
 	height: 430px;
 	background-color:black;
 	position: absolute;
-	top: 67px;
+	top: 66px;
     left: 86px;
     padding-bottom: 24px;
 }
 .rez{
-         width: 231px;
+    width: 231px;
     height: 78px;
     /* background-color: red; */
     /* margin-bottom: 20px; */
@@ -97,11 +97,7 @@ button{
 .oper-item:nth-child(3) button:active{
 	background-color:#A9A9A9;
 }
-.iphone{
-/*	background-image: url(ip.png);
-	width:488px;
-	height: 650px;*/
-}
+
 .wrapper{
 	position: absolute;
         top: 50%;

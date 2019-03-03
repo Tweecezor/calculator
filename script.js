@@ -42,12 +42,11 @@ function pressNumber(number){
 	} else{
 		if(display.value==="0"){
 			display.value = number;
-		} else{
-			display.value += number;
-		};
-	};
-
-
+        } else{
+             display.value += number;
+        };
+    };
+    changeSize();
 	console.log('клик по цифре '+ number)
 };
 
@@ -64,13 +63,22 @@ function pressOperations(oper){
 		} else if( currentOperation ==='X'){
 			currenNumber *= parseFloat(localNumber);
 		} else if( currentOperation ==='/'){
-			currenNumber /= parseFloat(localNumber);
+            if(localNumber === '0'){
+                document.getElementById('res').style.fontSize = '57px';
+                document.getElementById('res').style.color = 'white';
+                display.value = 'Ошибка';
+                newNumber = false;
+                currenNumber = 0;
+                return;
+            } else 
+            currenNumber /= parseFloat(localNumber);
+            
 		} else {
 			currenNumber = parseFloat(localNumber);
 		};
-
-		display.value = currenNumber;
-		currentOperation = oper;
+        fixedNumber();
+        currentOperation = oper;
+        changeSize();
 	};
 	console.log('клик по операции ' + oper);
 }
@@ -79,7 +87,8 @@ function clear(id){
 	display.value = 0;
 	newNumber = false;
 	currenNumber = 0;
-	console.log('клик по кнопке ' + id);
+    console.log('клик по кнопке ' + id);
+    document.getElementById('res').style.fontSize = '69px';
 }
 
 function pressDecimal(symbol){
@@ -92,7 +101,8 @@ function pressDecimal(symbol){
 			localDecimal += '.';
 		};
 	};
-	display.value = localDecimal;
+    display.value = localDecimal;
+    changeSize();
 	console.log('клик по кнопке '+ symbol)
 }
 
@@ -110,5 +120,33 @@ function pressZnak(){
 function pressPercent(){
 	var currentNumb = parseFloat(display.value);
 	currentNumb /= 100;
-	display.value = currentNumb; 
+    display.value = currentNumb; 
+    changeSize();
 }
+function changeSize(){
+    var displayLength = display.value;
+    if(displayLength.length < 5){
+        document.getElementById('res').style.fontSize = '69px';
+    };
+    if(displayLength.length > 5){
+        document.getElementById('res').style.fontSize = '50px';
+    } 
+     if(displayLength.length > 8){
+        document.getElementById('res').style.fontSize = '40px';
+    }
+}
+function fixedNumber(){
+    if ( currenNumber % 1 == 0) {
+        display.value = currenNumber;
+    } else{
+    var fixedCurrenNumber = 0;
+    var decimalCount = f(currenNumber);
+    // alert(decimalCount);
+    if(decimalCount > 6){
+        fixedCurrenNumber = currenNumber.toFixed(6);
+        display.value = fixedCurrenNumber;
+    } else 
+        display.value = currenNumber;
+    }
+}
+const f = x => ( (x.toString().includes('.')) ? (x.toString().split('.').pop().length) : (0) );
