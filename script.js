@@ -38,22 +38,23 @@ percentBtn.addEventListener('click', pressPercent);
 function pressNumber(number){
     var displayLength = 0;
     displayLength = display.value;
-    if(displayLength.length === 8 ){
-        return;
-    } else {
         if(newNumber){
             display.value = number;
             newNumber = false;
         } else{
-            if(display.value==="0"){
-                display.value = number;
+            if(displayLength.length === 8 ){
+                return;
             } else{
-                display.value += number;
-            };
+                if(display.value==="0"){
+                    display.value = number;
+                } else{
+                    display.value += number;
+                };
+            }
         };
         changeSize();
         console.log('клик по цифре '+ number)
-    }
+    // }
 };
 
 function pressOperations(oper){
@@ -139,13 +140,13 @@ function changeSize(){
         document.getElementById('res').style.fontSize = '48px';
     } 
      if(displayLength.length > 8){
-        document.getElementById('res').style.fontSize = '40px';
+        document.getElementById('res').style.fontSize = '38px';
     }
     if(displayLength.length > 10){
-        document.getElementById('res').style.fontSize = '30px';
+        document.getElementById('res').style.fontSize = '28px';
     }
     if(displayLength.length > 12){
-        document.getElementById('res').style.fontSize = '25px';
+        document.getElementById('res').style.fontSize = '24px';
     }
     if(displayLength.length > 15){
         document.getElementById('res').style.fontSize = '20px';
