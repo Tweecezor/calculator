@@ -36,6 +36,9 @@ znakBtn.addEventListener('click', pressZnak);
 percentBtn.addEventListener('click', pressPercent);
 
 function pressNumber(number){
+    if(display.value === 'Ошибка'){
+        clear();
+    }
     var displayLength = 0;
     displayLength = display.value;
         if(newNumber){
