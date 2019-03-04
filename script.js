@@ -36,18 +36,24 @@ znakBtn.addEventListener('click', pressZnak);
 percentBtn.addEventListener('click', pressPercent);
 
 function pressNumber(number){
-	if(newNumber){
-		display.value = number;
-		newNumber = false;
-	} else{
-		if(display.value==="0"){
-			display.value = number;
+    var displayLength = 0;
+    displayLength = display.value;
+    if(displayLength.length === 8 ){
+        return;
+    } else {
+        if(newNumber){
+            display.value = number;
+            newNumber = false;
         } else{
-             display.value += number;
+            if(display.value==="0"){
+                display.value = number;
+            } else{
+                display.value += number;
+            };
         };
-    };
-    changeSize();
-	console.log('клик по цифре '+ number)
+        changeSize();
+        console.log('клик по цифре '+ number)
+    }
 };
 
 function pressOperations(oper){
@@ -130,7 +136,7 @@ function changeSize(){
         document.getElementById('res').style.fontSize = '69px';
     };
     if(displayLength.length > 5){
-        document.getElementById('res').style.fontSize = '50px';
+        document.getElementById('res').style.fontSize = '48px';
     } 
      if(displayLength.length > 8){
         document.getElementById('res').style.fontSize = '40px';
