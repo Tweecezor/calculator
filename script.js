@@ -137,17 +137,32 @@ function changeSize(){
     }
 }
 function fixedNumber(){
+    var localValue = 0;
     if ( currenNumber % 1 == 0) {
         display.value = currenNumber;
     } else{
     var fixedCurrenNumber = 0;
     var decimalCount = f(currenNumber);
     // alert(decimalCount);
-    if(decimalCount > 6){
+    if(decimalCount > 15){
+        fixedCurrenNumber = currenNumber.toFixed(1);
+        display.value = fixedCurrenNumber;
+    } else if(decimalCount > 6){
         fixedCurrenNumber = currenNumber.toFixed(6);
         display.value = fixedCurrenNumber;
-    } else 
+    } else
         display.value = currenNumber;
-    }
+    };
+    // var newValue = 0;
+    // if(display.value > 10){
+    //      localValue = display.value;
+    //      newValue = localValue.toFixed(0);
+    //      display.value = newValue;
+    // } else if(display.value > 9){
+    //     localValue = display.value;
+    //     newValue = localValue.toFixed(1);
+    //      display.value = newValue;
+    // }
 }
 const f = x => ( (x.toString().includes('.')) ? (x.toString().split('.').pop().length) : (0) );
+
