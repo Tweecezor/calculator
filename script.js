@@ -135,6 +135,15 @@ function changeSize(){
      if(displayLength.length > 8){
         document.getElementById('res').style.fontSize = '40px';
     }
+    if(displayLength.length > 10){
+        document.getElementById('res').style.fontSize = '30px';
+    }
+    if(displayLength.length > 12){
+        document.getElementById('res').style.fontSize = '25px';
+    }
+    if(displayLength.length > 15){
+        document.getElementById('res').style.fontSize = '20px';
+    }
 }
 function fixedNumber(){
     var localValue = 0;
