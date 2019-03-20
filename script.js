@@ -10,6 +10,48 @@ var display = document.getElementById('res');
 var currenNumber = 0;
 var newNumber = false;
 var currentOperation = '';
+var orange = document.querySelectorAll('.orange');
+console.log(orange);
+var activeOper = false;
+
+for(var i = 0; i < orange.length; i++){
+    var active = orange[i];
+    active.addEventListener('click' , function(e){
+        activeOper = true;
+        console.log('haha');
+        console.log(e.target.textContent);
+        activeOp(e.target.textContent);
+	})
+}
+
+function activeOp(oper){
+    if(oper === 'X'){
+        document.getElementById('idUmnozh').classList.add('active');
+        document.getElementById('idMinus').classList.remove('active');
+        document.getElementById('idPlus').classList.remove('active');
+        document.getElementById('idDelit').classList.remove('active');
+    } else if(oper === '/'){
+        document.getElementById('idUmnozh').classList.remove('active');
+        document.getElementById('idMinus').classList.remove('active');
+        document.getElementById('idPlus').classList.remove('active');
+        document.getElementById('idDelit').classList.add('active');
+    } else if(oper === '+'){
+        document.getElementById('idUmnozh').classList.remove('active');
+        document.getElementById('idMinus').classList.remove('active');
+        document.getElementById('idPlus').classList.add('active');
+        document.getElementById('idDelit').classList.remove('active');
+    } else if(oper === '-'){
+        document.getElementById('idUmnozh').classList.remove('active');
+        document.getElementById('idMinus').classList.add('active');
+        document.getElementById('idPlus').classList.remove('active');
+        document.getElementById('idDelit').classList.remove('active');
+    } else if(oper === '='){
+        document.getElementById('idUmnozh').classList.remove('active');
+        document.getElementById('idMinus').classList.remove('active');
+        document.getElementById('idPlus').classList.remove('active');
+        document.getElementById('idDelit').classList.remove('active');
+    }
+}
 
 for(var i=0; i<numbers.length; i++){
 	var number = numbers[i];
@@ -26,12 +68,15 @@ for(var i=0; i<operations.length; i++){
 		pressOperations(e.target.textContent);
 	})
 }
+
 acBtn.addEventListener('click',function(e){
 	clear(e.srcElement.id);
 })
+
 decimalBtn.addEventListener('click', function(e){
 	pressDecimal(e.srcElement.id);
 })
+
 znakBtn.addEventListener('click', pressZnak);
 percentBtn.addEventListener('click', pressPercent);
 
